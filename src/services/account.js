@@ -16,3 +16,12 @@ export const logout = (data) => {
         data,
         {headers:{Authorization: `Bearer ${localStorage.getItem('jwt-token')}`}}
 )}
+
+export const getAccountData = (data) => {
+    return axios({
+        baseURL:'https://rentacarapi.amplitudo.me/api',
+        url:'/auth/me',
+        data,
+        headers:{Authorization: `Bearer ${localStorage.getItem('jwt-token')}`}
+    }
+)}
