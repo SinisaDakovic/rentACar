@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.loginImage {
+  flex-grow: 1;
+  background-image: url("../../../public/images/cars.jpg");
+  background-size: cover;
+  background-position: right bottom;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.loginImage > img {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loginForm {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../public/images/carpattern.png");
+  background-repeat: repeat;
+  background-size: 300px;
+}
+
+.loginContainer {
+  padding: 3em 1.5em;
+  background: rgba(190, 184, 184, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 320px;
+  width: 100%;
+  margin: 0 1em;
+}
+
+.loginContainer h2 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.loginContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginContainer form > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+.loginContainer form > div > span {
+  color: #ff0000;
+  font-size: 12px;
+}
+
+.loginContainer form > div > input {
+  padding: 0.7em;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+}
+
+#loginButton {
+  background-color: hsl(169, 16%, 21%);
+  padding: 0.8em 2.5em;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+#loginButton:hover {
+  background-color: hsl(169, 16%, 25%);
+}
+
+@media (max-width: 1000px) {
+  .loginImage {
+    display: none;
+  }
+}
