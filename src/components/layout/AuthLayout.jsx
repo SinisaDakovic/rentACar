@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../navbar/Navbar";
+import Nav from "../nav/Nav";
 
 const AuthLayout = ({ children }) => {
   return (
     <>
-      <Navbar content={children} />
+      <Nav content={children} />
     </>
   );
 };

@@ -1,6 +1,9 @@
 import React from "react";
 import "../login/login.css";
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom'
+import {useMutation} from 'react-query'
+import {login} from '../../services/account'
 import Logo from "../../logo.png";
 
 function Login() {
@@ -9,12 +12,24 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const navigate = useNavigate()
+
+  const loginMutation = useMutation((data) => login(data), {
+    onSuccess: (response) => {
+      localStorage.setItem("jwt-token", response?.data["access_token"]);
+      navigate("/home");
+    }
+  });
+
+   const onSubmit = (data) => {
+    loginMutation.mutate(data);
+  };
 
   return (
     <div className="container">
       <div className="loginImage">
-        <img src={Logo} width="250px" height="150px"></img>
+        <img src={Logo} width="250px" height="150px" alt="Logo"></img>
       </div>
       <div className="loginForm">
         <div className="loginContainer">

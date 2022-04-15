@@ -17,11 +17,9 @@ export const logout = (data) => {
         {headers:{Authorization: `Bearer ${localStorage.getItem('jwt-token')}`}}
 )}
 
-export const getAccountData = (data) => {
-    return axios({
-        baseURL:'https://rentacarapi.amplitudo.me/api',
-        url:'/auth/me',
-        data,
-        headers:{Authorization: `Bearer ${localStorage.getItem('jwt-token')}`}
-    }
+export const getAccountData = () => {
+    return axiosInstance.post(
+        '/auth/me',
+        null,
+        {headers:{Authorization: `Bearer ${localStorage.getItem('jwt-token')}`}}
 )}

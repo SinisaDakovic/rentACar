@@ -1,0 +1,16 @@
+.welcomeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+#welMsg {
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+#paragraph {
+  font-size: 20px;
+  letter-spacing: 1px;
+}

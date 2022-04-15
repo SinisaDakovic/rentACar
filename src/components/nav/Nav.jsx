@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Layout, Menu } from "antd";
 import {
   LogoutOutlined,
@@ -12,7 +12,7 @@ import {
 import "antd/dist/antd.css";
 import { useNavigate } from "react-router-dom";
 import { Content } from "antd/lib/layout/layout";
-import { logout } from "../../services/account";
+import { getAccountData, logout } from "../../services/account";
 import { useMutation } from "react-query";
 import PropTypes from "prop-types";
 import Logo from '../../logo.png'
@@ -20,7 +20,7 @@ import Logo from '../../logo.png'
 const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
 
-const Navbar = ({ content }) => {
+const Nav = ({ content }) => {
 
   const [collapsed, setCollapsed] = useState(true);
 
@@ -43,6 +43,26 @@ const Navbar = ({ content }) => {
   const onCollapse = (collapsed) => {
     setCollapsed(collapsed);
   };
+
+  const accountDataMutation = useMutation(() => getAccountData(), {
+    onSuccess: (res) => {
+      setUser(res?.data?.name)     
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const [user, setUser] = useState('')
+
+  useEffect(() => {
+    try{
+      accountDataMutation.mutate()
+
+    }catch(err){
+      console.log(err)
+    }
+  }, [])
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -88,24 +108,12 @@ const Navbar = ({ content }) => {
               <Menu.Item
                 key="option:1"
                 icon={<TeamOutlined />}
-                // onClick={() =>
-                //   open({
-                    //     title: `Add new car`,
-                    //     content: <ClientForm />,
-                    //   })
-                    // }
                     >
                 Add new Client
               </Menu.Item>
               <Menu.Item
                 key="option:2"
                 icon={<CarOutlined />}
-                // onClick={() =>
-                //   open({
-                    //     title: `Add new car`,
-                    //     content: <CarForm />,
-                    //   })
-                    // }
                     >
                 Add new Car
               </Menu.Item>
@@ -124,7 +132,7 @@ const Navbar = ({ content }) => {
           </SubMenu>
           </div>
           <Menu.Item key="user" icon={<UserOutlined />}>
-            User:
+            User:{user}
           </Menu.Item>
           <Menu.Item
             key="logout"
@@ -179,8 +187,8 @@ const Navbar = ({ content }) => {
   );
 };
 
-export default Navbar;
+export default Nav;
 
-Navbar.propTypes = {
+Nav.propTypes = {
   content: PropTypes.node,
 };
