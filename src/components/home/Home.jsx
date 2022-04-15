@@ -32,7 +32,7 @@ function Home() {
         <div className="welcomeContainer">
           <div>
             <h2 id="welMsg">Welcome, {user}</h2>
-            <p id="paragraph">Everything is ready for you.</p>        
+            <p id="paragraph">Everything is ready and waiting for you.</p>        
           </div>
         </div>
     )

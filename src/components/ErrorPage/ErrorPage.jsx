@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from "react-router";
 import { Result, Button } from "antd";
 import PropTypes from "prop-types";
-import '../ErrorPage/errorPage.css'
 
 
 function ErrorPage({error, errorMessage}) {
