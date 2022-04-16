@@ -7,6 +7,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import Home from './components/home/Home';
 import Clients from './components/Clients/Clients';
 import ModalProvider from './components/context/ModalContext';
+import Cars from './components/Cars/Cars';
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,14 @@ function App() {
         element={
           <PrivateRoute isPrivate={true}>
             <Clients/>
+          </PrivateRoute>
+        }
+        />
+        <Route
+        path="/cars"
+        element={
+          <PrivateRoute isPrivate={true}>
+            <Cars/>
           </PrivateRoute>
         }
         />
