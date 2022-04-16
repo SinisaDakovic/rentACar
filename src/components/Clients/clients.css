@@ -1,0 +1,9 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.buttons > button {
+  margin-right: 10em;
+}
