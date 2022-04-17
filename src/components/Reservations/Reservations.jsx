@@ -1,25 +1,23 @@
 import React from "react";
 import { useMutation } from "react-query";
-import {
-  deleteReservation,
-} from "../../services/reservations";
+import { deleteReservation } from "../../services/reservations";
 import { Table, Button, Modal, Input } from "antd";
 import { useModal } from "../context/ModalContext";
 import ReservationForm from "../Reservations/ReservationForm";
-import { DeleteFilled, EditFilled, PlusSquareOutlined } from "@ant-design/icons";
+import {
+  DeleteFilled,
+  EditFilled,
+  PlusSquareOutlined,
+} from "@ant-design/icons";
 import "antd/dist/antd.css";
 
 const Reservations = () => {
-
-    
-
   const { open } = useModal();
   const { Search } = Input;
   const { confirm } = Modal;
 
   const deleteMutation = useMutation((id) => deleteReservation(id), {
-    onSuccess: () => {
-    },
+    onSuccess: () => {},
     onError: (error) => {
       console.log(error);
     },
@@ -110,26 +108,21 @@ const Reservations = () => {
     },
   ];
 
-
   return (
     <div>
       <div className="buttons">
-           <Button
+        <Button
           onClick={() =>
             open({
               title: `Add new reservation`,
               content: <ReservationForm />,
             })
           }
-          icon={<PlusSquareOutlined/>}
+          icon={<PlusSquareOutlined />}
         >
           Add Reservation
         </Button>
-        <Search
-          style={{ width: "250px" }}
-          placeholder="Search"
-          allowClear
-        />
+        <Search style={{ width: "250px" }} placeholder="Search" allowClear />
       </div>
       <div>
         <Table

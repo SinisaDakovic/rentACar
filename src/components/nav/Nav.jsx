@@ -16,11 +16,17 @@ import { getAccountData, logout } from "../../services/account";
 import { useMutation } from "react-query";
 import PropTypes from "prop-types";
 import Logo from '../../logo.png'
+import {useModal} from '../context/ModalContext'
+import CarForm from '../Cars/CarForm'
+import ClientForm from '../Clients/ClientForm'
+import ReservationForm from '../Reservations/ReservationForm'
 
 const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const Nav = ({ content }) => {
+
+  const { open } = useModal();
 
   const [collapsed, setCollapsed] = useState(true);
 
@@ -108,16 +114,34 @@ const Nav = ({ content }) => {
               <Menu.Item
                 key="option:1"
                 icon={<TeamOutlined />}
+                onClick={() =>
+                  open({
+                    title: `Add new client`,
+                    content: <ClientForm />,
+                  })}
                     >
                 Add new Client
               </Menu.Item>
               <Menu.Item
                 key="option:2"
                 icon={<CarOutlined />}
+                onClick={() =>
+                  open({
+                    title: `Add new client`,
+                    content: <CarForm />,
+                  })}
                     >
                 Add new Car
               </Menu.Item>
-              <Menu.Item key="option:3" icon={<SolutionOutlined />}>
+              <Menu.Item 
+               key="option:3"
+               icon={<SolutionOutlined />}
+               onClick={() =>
+                  open({
+                    title: `Add new reservation`,
+                    content: <ReservationForm />,
+                  })}
+              >
                 Add new Reservation
               </Menu.Item>
             </Menu.ItemGroup>
