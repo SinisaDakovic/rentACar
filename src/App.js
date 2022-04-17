@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import Clients from './components/Clients/Clients';
 import ModalProvider from './components/context/ModalContext';
 import Cars from './components/Cars/Cars';
+import Reservations from './components/Reservations/Reservations';
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,14 @@ function App() {
         element={
           <PrivateRoute isPrivate={true}>
             <Cars/>
+          </PrivateRoute>
+        }
+        />
+        <Route
+        path="/reservations"
+        element={
+          <PrivateRoute isPrivate={true}>
+            <Reservations/>
           </PrivateRoute>
         }
         />
