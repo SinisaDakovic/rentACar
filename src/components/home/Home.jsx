@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react'
 import { useMutation } from "react-query";
 import {getAccountData} from '../../services/account'
 import '../home/home.css'
+import {useTranslation} from 'react-i18next'
 
 function Home() {
 
@@ -28,11 +29,13 @@ function Home() {
   }, [])
 
 
+  const { t } = useTranslation()
+
     return (
         <div className="welcomeContainer">
           <div>
-            <h2 id="welMsg">Welcome, {user}</h2>
-            <p id="paragraph">Everything is ready and waiting for you.</p>        
+            <h2 id="welMsg">{t('wlcm.1')}, {user}</h2>
+            <p id="paragraph">{t('evr.1')}</p>        
           </div>
         </div>
     )

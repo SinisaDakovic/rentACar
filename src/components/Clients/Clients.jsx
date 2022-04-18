@@ -10,10 +10,13 @@ import {
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import '../Clients/clients.css'
+import {useTranslation} from 'react-i18next'
 
 const Clients = () => {
 
   //Komponenta nije do kraja funkcionalna
+
+  const { t } = useTranslation();
 
   const { open } = useModal();
   const { confirm } = Modal;
@@ -22,7 +25,7 @@ const Clients = () => {
 
   const editButtonClick = (id) => {
     open({
-      title: `Edit client - ${id}`,
+      title: `${t('editClient.1')} - ${id}`,
       content: <ClientForm id={id} />,
     });
   };
@@ -31,39 +34,39 @@ const Clients = () => {
     {
       key: "identification_document_no",
       dataIndex: "identification_document_no",
-      title: "Number od identification document",
+      title: t('numIndentDoc.1'),
     },
-    { key: "name", dataIndex: "name", title: "Name" },
+    { key: "name", dataIndex: "name", title: t('name.1') },
     {
       key: "phone_no",
       dataIndex: "phone_no",
-      title: "Phone",
+      title: t('phone.1'),
     },
     { key: "email", dataIndex: "email", title: "Email" },
     {
       key: "date_of_first_reservation",
       dataIndex: "date_of_first_reservation",
-      title: "Date of first reservation",
+      title: t('dateOfFirstRes.1'),
     },
     {
       key: "date_of_last_reservation",
       dataIndex: "date_of_last_reservation",
-      title: "Date of last reservation",
+      title: t('dateOfLastRes.1'),
     },
     {
       key: "country_id",
       dataIndex: ["country", "name"],
-      title: "Country",
+      title: t('country.1'),
     },
     {
       key: "remarks",
       dataIndex: "remarks",
-      title: "Remarks",
+      title: t('remarks.1'),
       ellipsis: true,
     },
     {
       key: "edit",
-      title: "Edit",
+      title: t('edit.1'),
       render: (record) => (
         <Button
           icon={
@@ -89,13 +92,13 @@ const Clients = () => {
             }
           }}
         >
-          Edit
+          {t('edit.1')}
         </Button>
       ),
     },
     {
       key: "delete",
-      title: "Delete",
+      title: t('delete.1'),
       render: (record) => (
         <Button
           onClick={(e) => {
@@ -127,7 +130,7 @@ const Clients = () => {
           }}
           icon={<DeleteFilled/>}
         >
-          Delete
+          {t('delete.1')}
         </Button>
       ),
     },
@@ -144,17 +147,17 @@ const Clients = () => {
         <Button
           onClick={() =>
             open({
-              title: `Add new client`,
+              title: t('addNewClientTitle.1'),
               content: <ClientForm />,
             })
           }
           icon={<PlusSquareOutlined/>}
         >
-          Add Client
+          {t('addClient.1')}
         </Button>
         <Search
           style={{ width: "250px" }}
-          placeholder="Search"
+          placeholder={t('search.1')}
           onSearch={onSearch}
           allowClear
         />

@@ -10,8 +10,10 @@ import "antd/dist/antd.css";
 import { getLocations } from "../../services/reservations";
 import { useQuery } from "react-query";
 import PropTypes from "prop-types";
+import {useTranslation} from 'react-i18next'
 
 const ReservationForm = ({ id, disabled }) => {
+  const { t } = useTranslation();
   const { data: getLocationsResponse } = useQuery("getLocations", getLocations);
 
   const {
@@ -21,40 +23,40 @@ const ReservationForm = ({ id, disabled }) => {
 
   const clientContent = (
     <div>
-      <p>Name: </p>
-      <p>No of document:</p>
+      <p>{t('name.1')}: </p>
+      <p>{t('noOfDoc.1')}:</p>
       <p>Email: </p>
-      <p>Phone: </p>
-      <p>Country: </p>
+      <p>{t('phone.1')}: </p>
+      <p>{t('country.1')}: </p>
     </div>
   );
 
   const carContent = (
     <div>
-      <p>Plate number: </p>
-      <p>Production year:</p>
-      <p>Type of car: </p>
-      <p>No of seats: </p>
-      <p>Price per day:</p>
+      <p>{t('plateNum.1')}: </p>
+      <p>{t('prodYear.1')}:</p>
+      <p>{t('carType.1')}: </p>
+      <p>{t('noOfSeats.1')}: </p>
+      <p>{t('pricePerD.1')}:</p>
     </div>
   );
 
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Popover placement="bottom" content={carContent} title="Car info">
+        <Popover placement="bottom" content={carContent} title={t('carInf.1')}>
           <Button icon={<CarOutlined />} shape="round">
-            Car info
+            {t('carInf.1')}
           </Button>
         </Popover>
         {disabled !== true ? (
           <Popover
             placement="bottom"
             content={clientContent}
-            title="Client info"
+            title={t('clientInf.1')}
           >
             <Button icon={<UserOutlined />} shape="round" hidden={disabled}>
-              Client info
+              {t('clientInf.1')}
             </Button>
           </Popover>
         ) : (
@@ -62,14 +64,14 @@ const ReservationForm = ({ id, disabled }) => {
         )}
       </div>
       <Form>
-        <Form.Item label="From date"></Form.Item>
+        <Form.Item label={t('fromDate.1')}></Form.Item>
         <Controller
           name="from_date"
           control={control}
           render={({ field }) => (
             <DatePicker
               {...field}
-              placeholder="From date"
+              placeholder={t('fromDate.1')}
               disabled={disabled}
             />
           )}
@@ -87,12 +89,12 @@ const ReservationForm = ({ id, disabled }) => {
         ) : (
           <span></span>
         )}
-        <Form.Item label="To date"></Form.Item>
+        <Form.Item label={t('toDate.1')}></Form.Item>
         <Controller
           name="to_date"
           control={control}
           render={({ field }) => (
-            <DatePicker {...field} placeholder="To date" disabled={disabled} />
+            <DatePicker {...field} placeholder={t('toDate.1')} disabled={disabled} />
           )}
           rules={{
             required: {
@@ -108,7 +110,7 @@ const ReservationForm = ({ id, disabled }) => {
         ) : (
           <span></span>
         )}
-        <Form.Item label="Country"></Form.Item>
+        <Form.Item label={t('country.1')}></Form.Item>
         <Controller
           name="rent_location_id"
           control={control}
@@ -116,7 +118,7 @@ const ReservationForm = ({ id, disabled }) => {
             <Select
               {...field}
               disabled={disabled}
-              placeholder="Choose rent location"
+              placeholder={t('chooseRentL.1')}
               options={getLocationsResponse?.data?.map((location) => {
                 return { value: location.id, label: location.name };
               })}
@@ -136,7 +138,7 @@ const ReservationForm = ({ id, disabled }) => {
         ) : (
           <span></span>
         )}
-        <Form.Item label="Country"></Form.Item>
+        <Form.Item label={t('country.1')}></Form.Item>
         <Controller
           name="return_location_id"
           control={control}
@@ -145,7 +147,7 @@ const ReservationForm = ({ id, disabled }) => {
               {...field}
               disabled={disabled}
               className="width"
-              placeholder="Choose return location"
+              placeholder={t('chooseRetL.1')}
               options={getLocationsResponse?.data?.map((location) => {
                 return { value: location.id, label: location.name };
               })}
@@ -171,7 +173,7 @@ const ReservationForm = ({ id, disabled }) => {
             type="primary"
             disabled={disabled}
           >
-            Submit
+            {t('submit.1')}
           </Button>
         </div>
       </Form>

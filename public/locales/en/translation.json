@@ -1,0 +1,161 @@
+{
+    "wlcm": {
+        "1":"Welcome"
+    },
+    "evr":{
+        "1":"Everything is ready and waiting for you."
+    },
+    "cars":{
+        "1":"Cars"
+    },
+    "usr":{
+        "1":"User"
+    },
+    "client":{
+        "1":"Clients"
+    },
+    "logOut":{
+        "1":"Logout"
+    },
+    "reserv":{
+        "1":"Reservations"
+    },
+    "addNewCar":{
+        "1":"Add new Car"
+    },
+    "addNewClient":{
+        "1":"Add new Client"
+    },
+    "addNewReserv":{
+        "1":"Add new Reservation"
+    },
+    "options":{
+        "1":"Options"
+    },
+    "chooseLang":{
+        "1":"Choose language"
+    },
+    "add":{
+        "1":"Add"
+    },
+    "pages":{
+        "1":"Pages"
+    },
+    "plateNum":{
+        "1":"Plate number"
+    },
+    "prodYear":{
+        "1":"Production year"
+    },
+    "carType":{
+        "1":"Car type"
+    },
+    "chooseType":{
+        "1":"-- Choose type --"
+    },
+    "noOfSeats":{
+        "1":"Number of seats"
+    },
+    "pricePerD":{
+        "1":"Price per day"
+    },
+    "remarks":{
+        "1":"Remarks"
+    },
+    "submit":{
+        "1":"Submit"
+    },
+    "optionalField":{
+        "1":"This is a optional field"
+    },
+    "addCar":{
+        "1":"Add Car"
+    },
+    "search":{
+        "1":"Search"
+    },
+    "addNewCarTitle":{
+        "1":"Add new car"
+    },
+    "addNewClientTitle":{
+        "1":"Add new client"
+    },
+    "addClient":{
+        "1":"Add Client"
+    },
+    "edit":{
+        "1":"Edit"
+    },
+    "name":{
+        "1":"Name"
+    },
+    "country":{
+        "1":"Country"
+    },
+    "chooseCountry":{
+        "1":"-- Choose country --"
+    },
+    "phone":{
+        "1":"Phone"
+    },
+    "indentNumber":{
+        "1":"Identification document number"
+    },
+    "numIndentDoc":{
+        "1":"Number of identification document"
+    },
+    "dateOfFirstRes":{
+        "1":"Date of first reservation"
+    },
+    "dateOfLastRes":{
+        "1":"Date of last reservation"
+    },
+    "delete":{
+        "1":"Delete"
+    },
+    "editClient":{
+        "1":"Edit client"
+    },
+    "editCar":{
+        "1":"Edit car"
+    },
+    "editReserv":{
+        "1":"Edit reservation"
+    },
+    "clients":{
+        "1":"Client"
+    },
+    "fromDate":{
+        "1":"From date"
+    },
+    "toDate":{
+        "1":"To date"
+    },
+    "pickUpLoc":{
+        "1":"Pick-up location"
+    },
+    "dropOffLoc":{
+        "1":"Drop-off location"
+    },
+    "totPrice":{
+        "1":"Total price"
+    },
+    "addResrv":{
+        "1":"Add Reservation"
+    },
+    "noOfDoc":{
+        "1":" No of document"
+    },
+    "carInf":{
+        "1":"Car info"
+    },
+    "clientInf":{
+        "1":"Client info"
+    },
+    "chooseRentL":{
+        "1":"Choose rent location"
+    },
+    "chooseRetL":{
+        "1":"Choose return location"
+    }
+}

@@ -10,8 +10,10 @@ import {
   PlusSquareOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import {useTranslation} from 'react-i18next'
 
 const Cars = () => {
+  const { t } = useTranslation()
   const queryClient = useQueryClient();
   const { open } = useModal();
   const { confirm } = Modal;
@@ -29,7 +31,7 @@ const Cars = () => {
 
   const editButtonClick = (record) => {
     open({
-      title: `Edit car - ${record?.id}`,
+      title: `${t('editCar.1')} - ${record?.id}`,
       content: <CarForm id={record?.id} />,
     });
   };
@@ -64,32 +66,32 @@ const Cars = () => {
     {
       key: "plate_no",
       dataIndex: "plate_no",
-      title: "Plate number",
+      title: t('plateNum.1'),
     },
     {
       key: "production_year",
       dataIndex: "production_year",
-      title: "Production year",
+      title: t('prodYear.1'),
     },
     {
       key: "car_type_id",
-      title: "Car type",
+      title: t('carType.1'),
       render: (record) => record.car_type.name,
     },
     {
       key: "price_per_day",
       dataIndex: "price_per_day",
-      title: "Price per day",
+      title: t('pricePerD.1'),
     },
     {
       key: "no_of_seats",
       dataIndex: "no_of_seats",
-      title: "Number of seats",
+      title: t('noOfSeats.1'),
     },
-    { key: "remarks", dataIndex: "remarks", title: "Remarks", ellipsis: true },
+    { key: "remarks", dataIndex: "remarks", title: t('remarks.1'), ellipsis: true },
     {
       key: "edit",
-      title: "Edit",
+      title: t('edit.1'),
       render: (record) => (
         <Button
           icon={
@@ -102,13 +104,13 @@ const Cars = () => {
             editButtonClick(record);
           }}
         >
-          Edit
+          {t('edit.1')}
         </Button>
       ),
     },
     {
       key: "delete",
-      title: "Delete",
+      title: t('delete.1'),
       render: (record) => (
         <Button
           onClick={(e) => {
@@ -126,7 +128,7 @@ const Cars = () => {
           }}
           icon={<DeleteFilled className="red" />}
         >
-          Delete
+          {t('delete.1')}
         </Button>
       ),
     },
@@ -147,17 +149,17 @@ const Cars = () => {
         <Button
           onClick={() =>
             open({
-              title: `Add new car`,
+              title: t('addNewCarTitle.1'),
               content: <CarForm />,
             })
           }
           icon={<PlusSquareOutlined/>}
         >
-          Add Car
+          {t('addCar.1')}
         </Button>
         <Search
           style={{ width: "250px" }}
-          placeholder="Search"
+          placeholder={t('search.1')}
           onSearch={onSearch}
           loading={isFetching}
           allowClear

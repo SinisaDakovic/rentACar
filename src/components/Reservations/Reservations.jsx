@@ -10,8 +10,10 @@ import {
   PlusSquareOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import {useTranslation} from 'react-i18next'
 
 const Reservations = () => {
+  const { t } = useTranslation();
   const { open } = useModal();
   const { Search } = Input;
   const { confirm } = Modal;
@@ -25,7 +27,7 @@ const Reservations = () => {
 
   const editButtonClick = (record) => {
     open({
-      title: `Edit reservation - ${record?.id}`,
+      title: `${t('editReserv.1')} - ${record?.id}`,
       content: <ReservationForm id={record?.id} />,
     });
   };
@@ -34,41 +36,41 @@ const Reservations = () => {
     {
       key: "client",
       dataIndex: ["client", "name"],
-      title: "Client",
+      title: t('clients.1'),
     },
     {
       key: "plate_no",
       dataIndex: ["vehicle", "plate_no"],
-      title: "Plate number",
+      title: t("plateNum.1"),
     },
     {
       key: "from_date",
       dataIndex: "from_date",
-      title: "From date",
+      title: t("fromDate.1"),
     },
     {
       key: "to_date",
       dataIndex: "to_date",
-      title: "To date",
+      title: t('toDate.1'),
     },
     {
       key: "rent_location",
       dataIndex: ["rent_location", "name"],
-      title: "Pick-up location",
+      title: t('pickUpLoc.1'),
     },
     {
       key: "return_location",
       dataIndex: ["return_location", "name"],
-      title: "Drop-off location",
+      title: t('dropOffLoc.1'),
     },
     {
       key: "total_price",
       dataIndex: "total_price",
-      title: "Total price",
+      title: t('totPrice.1'),
     },
     {
       key: "edit",
-      title: "Edit",
+      title: t('edit.1'),
       render: (record) => (
         <Button
           icon={<EditFilled className="site-form-item-icon blue" />}
@@ -77,13 +79,13 @@ const Reservations = () => {
             editButtonClick(record);
           }}
         >
-          Edit
+          {t('edit.1')}
         </Button>
       ),
     },
     {
       key: "delete",
-      title: "Delete",
+      title: t('delete.1'),
       render: (record) => (
         <Button
           onClick={(e) => {
@@ -101,7 +103,7 @@ const Reservations = () => {
           }}
           icon={<DeleteFilled className="red" />}
         >
-          Delete
+          {t('delete.1')}
         </Button>
       ),
       width: "120px",
@@ -114,15 +116,15 @@ const Reservations = () => {
         <Button
           onClick={() =>
             open({
-              title: `Add new reservation`,
+              title: t('addNewReserv.1'),
               content: <ReservationForm />,
             })
           }
           icon={<PlusSquareOutlined />}
         >
-          Add Reservation
+          {t("addResrv.1")}
         </Button>
-        <Search style={{ width: "250px" }} placeholder="Search" allowClear />
+        <Search style={{ width: "250px" }} placeholder={t('search.1')} allowClear />
       </div>
       <div>
         <Table

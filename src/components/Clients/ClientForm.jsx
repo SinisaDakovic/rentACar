@@ -25,8 +25,10 @@ import {
 } from "react-query";
 import PropTypes from "prop-types";
 import TextArea from "antd/lib/input/TextArea";
+import {useTranslation} from 'react-i18next'
 
 const ClientForm = ({ id, disabled }) => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [enableQuery, setEnableQuery] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -106,14 +108,14 @@ const ClientForm = ({ id, disabled }) => {
     <QueryClientProvider client={queryClient}>
       <Spin spinning={isLoading}>
         <Form>
-          <Form.Item label="Name"></Form.Item>
+          <Form.Item label={t('name.1')}></Form.Item>
           <Controller
             name="name"
             control={control}
             render={({ field }) => (
               <Input
                 {...field}
-                placeholder="Name"
+                placeholder={t('name.1')}
                 autoComplete="off"
                 disabled={disabled}
                 prefix={<UserOutlined className="site-form-item-icon" />}
@@ -143,7 +145,7 @@ const ClientForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="Identification document number"></Form.Item>
+          <Form.Item label={t('indentNumber.1')}></Form.Item>
           <Controller
             name="identification_document_no"
             control={control}
@@ -152,7 +154,7 @@ const ClientForm = ({ id, disabled }) => {
                 {...field}
                 disabled={disabled}
                 autoComplete="off"
-                placeholder="Identification document number"
+                placeholder={t('indentNumber.1')}
                 prefix={<IdcardOutlined className="site-form-item-icon" />}
               />
             )}
@@ -175,7 +177,7 @@ const ClientForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="Country"></Form.Item>
+          <Form.Item label={t('country.1')}></Form.Item>
           <Controller
             name="country_id"
             control={control}
@@ -184,7 +186,7 @@ const ClientForm = ({ id, disabled }) => {
                 {...field}
                 className="width"
                 disabled={disabled}
-                placeholder="-- Choose country --"
+                placeholder={t('chooseCountry.1')}
                 options={getCountriesResponse?.data?.map((country) => {
                   return { value: country.id, label: country.name };
                 })}
@@ -202,14 +204,14 @@ const ClientForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="Phone"></Form.Item>
+          <Form.Item label={t("phone.1")}></Form.Item>
           <Controller
             name="phone_no"
             control={control}
             render={({ field }) => (
               <Input
                 {...field}
-                placeholder="Phone"
+                placeholder={t("phone.1")}
                 autoComplete="off"
                 disabled={disabled}
                 prefix={<PhoneOutlined className="site-form-item-icon" />}
@@ -265,9 +267,9 @@ const ClientForm = ({ id, disabled }) => {
             <span></span>
           )}
           <Form.Item
-            label="Remarks"
+            label={t("remarks.1")}
             tooltip={{
-              title: "This is a optional field",
+              title: t("optionalField.1"),
               icon: <InfoCircleOutlined />,
             }}
           ></Form.Item>
@@ -278,7 +280,7 @@ const ClientForm = ({ id, disabled }) => {
               <TextArea
                 {...field}
                 disabled={disabled}
-                placeholder="Remarks"
+                placeholder={t("remarks.1")}
                 showCount
                 maxLength={255}
               />
@@ -292,7 +294,7 @@ const ClientForm = ({ id, disabled }) => {
               onClick={handleSubmit(onSubmit)}
               htmlType="submit"
             >
-              Submit
+              {t('submit.1')}
             </Button>
           </div>
         </Form>

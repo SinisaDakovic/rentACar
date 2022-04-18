@@ -20,6 +20,7 @@ import {useModal} from '../context/ModalContext'
 import CarForm from '../Cars/CarForm'
 import ClientForm from '../Clients/ClientForm'
 import ReservationForm from '../Reservations/ReservationForm'
+import {useTranslation} from 'react-i18next'
 
 const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -70,6 +71,13 @@ const Nav = ({ content }) => {
     }
   }, [])
 
+
+  const { t, i18n } = useTranslation()
+
+  const translate = (language) => {
+      i18n.changeLanguage(language)
+  }
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
@@ -83,15 +91,15 @@ const Nav = ({ content }) => {
 
           <div>
 
-          <SubMenu key="options" icon={<SettingOutlined />} title="Options">
-            <Menu.ItemGroup className="siderMenuGroup" title="Pages">
+          <SubMenu key="options" icon={<SettingOutlined />} title={t('options.1')}>
+            <Menu.ItemGroup className="siderMenuGroup" title={t('pages.1')}>
               <Menu.Item
                 key="clients"
                 icon={<TeamOutlined />}
                 title="Clients"
                 onClick={() => navigate("/clients")}
                 >
-                Clients
+                {t('client.1')}
               </Menu.Item>
               <Menu.Item
                 key="cars"
@@ -99,7 +107,7 @@ const Nav = ({ content }) => {
                 title="Cars"
                 onClick={() => navigate("/cars")}
                 >
-                Cars
+                {t('cars.1')}
               </Menu.Item>
               <Menu.Item
                 key="reservations"
@@ -107,56 +115,64 @@ const Nav = ({ content }) => {
                 title="Reservations"
                 onClick={() => navigate("/reservations")}
                 >
-                Reservations
+                {t('reserv.1')}
               </Menu.Item>
             </Menu.ItemGroup>
-            <Menu.ItemGroup title="Add">
+            <Menu.ItemGroup title={t('add.1')}>
               <Menu.Item
                 key="option:1"
                 icon={<TeamOutlined />}
                 onClick={() =>
                   open({
-                    title: `Add new client`,
+                    title: t('addNewClientTitle.1'),
                     content: <ClientForm />,
                   })}
                     >
-                Add new Client
+                {t('addNewClient.1')}
               </Menu.Item>
               <Menu.Item
                 key="option:2"
                 icon={<CarOutlined />}
                 onClick={() =>
                   open({
-                    title: `Add new client`,
+                    title: t('addNewCarTitle.1'),
                     content: <CarForm />,
                   })}
                     >
-                Add new Car
+                {t('addNewCar.1')}
               </Menu.Item>
               <Menu.Item 
                key="option:3"
                icon={<SolutionOutlined />}
                onClick={() =>
                   open({
-                    title: `Add new reservation`,
+                    title: t('addNewReserv.1'),
                     content: <ReservationForm />,
                   })}
               >
-                Add new Reservation
+                {t('addNewReserv.1')}
               </Menu.Item>
             </Menu.ItemGroup>
-            <Menu.ItemGroup title="Choose language">
-              <Menu.Item key="option:4" icon={<ReadOutlined />}>
+            <Menu.ItemGroup title={t('chooseLang.1')}>
+              <Menu.Item
+               key="option:4"
+               icon={<ReadOutlined />}
+               onClick={() => translate('mne')}
+               >
                 MNE
               </Menu.Item>
-              <Menu.Item key="option:5" icon={<ReadOutlined />}>
+              <Menu.Item
+               key="option:5"
+               icon={<ReadOutlined />}
+               onClick={() => translate('en')}
+               >
                 ENG
               </Menu.Item>
             </Menu.ItemGroup>
           </SubMenu>
           </div>
           <Menu.Item key="user" icon={<UserOutlined />}>
-            User:{user}
+            {t('usr.1')}: {user}
           </Menu.Item>
           <Menu.Item
             key="logout"
@@ -166,7 +182,7 @@ const Nav = ({ content }) => {
                   logoutEvent();
                 }}
                 >
-            Logout
+            {t('logOut.1')}
           </Menu.Item>
         </Menu>
       </Header>
@@ -185,7 +201,7 @@ const Nav = ({ content }) => {
               title="Clients"
               onClick={() => navigate("/clients")}
             >
-              Clients
+              {t('client.1')}
             </Menu.Item>
             <Menu.Item
               key="3"
@@ -193,7 +209,7 @@ const Nav = ({ content }) => {
               title="Cars"
               onClick={() => navigate("/cars")}
             >
-              Cars
+              {t('cars.1')}
             </Menu.Item>
             <Menu.Item
               key="4"
@@ -201,7 +217,7 @@ const Nav = ({ content }) => {
               title="Reservations"
               onClick={() => navigate("/reservations")}
             >
-              Reservations
+              {t('reserv.1')}
             </Menu.Item>
           </Menu>
         </Sider>

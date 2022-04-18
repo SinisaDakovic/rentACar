@@ -1,0 +1,162 @@
+{
+    "wlcm": {
+        "1":"Dobrodošli"
+    },
+    "evr":{
+        "1":"Sve je spremno i čeka na Vas."
+    },
+    "cars":{
+        "1":"Vozila"
+    },
+    "usr":{
+        "1":"Korisnik"
+    },
+    "client":{
+        "1":"Klijenti"
+    },
+    "logOut":{
+        "1":"Odjavite se"
+    },
+    "reserv":{
+        "1":"Rezervacije"
+    },
+    "addNewCar":{
+        "1":"Dodajte novo vozilo"
+    },
+    "addNewClient":{
+        "1":"Dodajte novog klijenta"
+    },
+    "addNewReserv":{
+        "1":"Dodajte novu rezervaciju"
+    },
+    "options":{
+        "1":"Opcije"
+    },
+    "chooseLang":{
+        "1":"Izaberite jezik"
+    },
+    "add":{
+        "1":"Dodajte"
+    },
+    "pages":{
+        "1":"Stranice"
+    },
+    "plateNum":{
+        "1":"Broj tablica"
+    },
+    "prodYear":{
+        "1":"Godina proizvodnje"
+    },
+    "carType":{
+        "1":"Tip auta"
+    },
+    "chooseType":{
+        "1":"-- Izaberite tip --"
+    },
+    "noOfSeats":{
+        "1":"Broj sjedišta"
+    },
+    "pricePerD":{
+        "1":"Cijena po danu"
+    },
+    "remarks":{
+        "1":"Napomena"
+    },
+    "submit":{
+        "1":"Potvrdi"
+    },
+    "optionalField":{
+        "1":"Ovo je opciono polje"
+    },
+    "addCar":{
+        "1":"Dodajte Auto"
+    },
+    "search":{
+        "1":"Pretrazite"
+    },
+    "addNewCarTitle":{
+        "1":"Dodajte novo auto"
+    },
+    "addNewClientTitle":{
+        "1":"Dodajte novog klijenta"
+    },
+    "addClient":{
+        "1":"Dodajte Klijenta"
+    },
+    "edit":{
+        "1":"Izmijenite"
+    },
+    "name":{
+        "1":"Ime"
+    },
+    "country":{
+        "1":"Drzava"
+    },
+    "chooseCountry":{
+        "1":"-- Izaberite drzavu --"
+    },
+    "phone":{
+        "1":"Telefon"
+    },
+    "indentNumber":{
+        "1":"Broj lične karte"
+    },
+    "numIndentDoc":{
+        "1":"Broj lične karte"
+    },
+    "dateOfFirstRes":{
+        "1":"Datum prve rezervacije"
+    },
+    "dateOfLastRes":{
+        "1":"Datum poslednje rezervacije"
+    },
+    "delete":{
+        "1":"Obrišite"
+    },
+    "editClient":{
+        "1":"Izmijenite klijenta"
+    },
+    "editCar":{
+        "1":"Izmijenite auto"
+    },
+    "editReserv":{
+        "1":"Izmijenite rezervaciju"
+    },
+    "clients":{
+        "1":"Klijent"
+    },
+    "fromDate":{
+        "1":"Od"
+    },
+    "toDate":{
+        "1":"Do"
+    },
+    "pickUpLoc":{
+        "1":"Lokacija za preuzimanje"
+    },
+    "dropOffLoc":{
+        "1":"Lokacija za ostavljanje"
+    },
+    "totPrice":{
+        "1":"Ukupna cijena"
+    },
+    "addResrv":{
+        "1":"Dodajte Rezervaciju"
+    },
+    "noOfDoc":{
+        "1":" Broj dokumenta"
+    },
+    "carInf":{
+        "1":"Vozilo info"
+    },
+    "clientInf":{
+        "1":"Klijent info"
+    },
+    "chooseRentL":{
+        "1":"Izaberite lokaciju rentanja"
+    },
+    "chooseRetL":{
+        "1":"Izaberite povratnu lokaciju"
+    }
+
+}

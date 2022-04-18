@@ -15,6 +15,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useModal } from "../context/ModalContext";
 import PropTypes from "prop-types";
 import "antd/dist/antd.css";
+import {useTranslation} from 'react-i18next'
 
 const CarForm = ({ id, disabled }) => {
     
@@ -112,11 +113,13 @@ const CarForm = ({ id, disabled }) => {
     };
   }, [id, reset]);
 
+  const { t } = useTranslation()
+
   return (
     <>
       <Spin spinning={isLoading}>
         <Form>
-          <Form.Item label="Plate number"></Form.Item>
+          <Form.Item label={t('plateNum.1')}></Form.Item>
           <Controller
             name="plate_no"
             control={control}
@@ -125,7 +128,7 @@ const CarForm = ({ id, disabled }) => {
                 {...field}
                 disabled={disabled}
                 autoComplete="off"
-                placeholder="Plate number"
+                placeholder={t('plateNum.1')}
                 prefix={<IdcardOutlined className="site-form-item-icon" />}
               />
             )}
@@ -147,7 +150,7 @@ const CarForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="Production year"></Form.Item>
+          <Form.Item label={t('prodYear.1')}></Form.Item>
           <Controller
             name="production_year"
             control={control}
@@ -156,7 +159,7 @@ const CarForm = ({ id, disabled }) => {
                 {...field}
                 disabled={disabled}
                 autoComplete="off"
-                placeholder="Production year"
+                placeholder={t('prodYear.1')}
                 prefix={<CalendarOutlined className="site-form-item-icon" />}
               />
             )}
@@ -182,7 +185,7 @@ const CarForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="Car type"></Form.Item>
+          <Form.Item label={t('carType.1')}></Form.Item>
           <Controller
             name="car_type_id"
             control={control}
@@ -191,7 +194,7 @@ const CarForm = ({ id, disabled }) => {
                 {...field}
                 className="width"
                 disabled={disabled}
-                placeholder="-- Choose type --"
+                placeholder={t('chooseType.1')}
                 options={getCarTypesResponse?.data?.data.map((type) => {
                   return { value: type.id, label: type.name };
                 })}
@@ -211,7 +214,7 @@ const CarForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="No of seats"></Form.Item>
+          <Form.Item label={t('noOfSeats.1')}></Form.Item>
           <Controller
             name="no_of_seats"
             control={control}
@@ -220,7 +223,7 @@ const CarForm = ({ id, disabled }) => {
                 {...field}
                 disabled={disabled}
                 autoComplete="off"
-                placeholder="Number of seats"
+                placeholder={t('noOfSeats.1')}
                 prefix={
                   <InsertRowRightOutlined className="site-form-item-icon" />
                 }
@@ -252,7 +255,7 @@ const CarForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
-          <Form.Item label="Price per day"></Form.Item>
+          <Form.Item label={t('pricePerD.1')}></Form.Item>
           <Controller
             name="price_per_day"
             control={control}
@@ -261,7 +264,7 @@ const CarForm = ({ id, disabled }) => {
                 {...field}
                 disabled={disabled}
                 autoComplete="off"
-                placeholder="Price per day"
+                placeholder={t('pricePerD.1')}
                 prefix={<EuroOutlined className="site-form-item-icon" />}
               />
             )}
@@ -292,20 +295,20 @@ const CarForm = ({ id, disabled }) => {
             <span></span>
           )}
           <Form.Item
-            label="Remarks"
+            label={t('remarks.1')}
             tooltip={{
-              title: "This is a optional field",
+              title: t('optionalField.1'),
               icon: <InfoCircleOutlined />,
             }}
           ></Form.Item>
           <Controller
-            name="remarks"
+            name={t('remarks.1')}
             control={control}
             render={({ field }) => (
               <TextArea
                 {...field}
                 disabled={disabled}
-                placeholder="Remarks"
+                placeholder={t('remarks.1')}
                 showCount
                 maxLength={255}
               />
@@ -318,7 +321,7 @@ const CarForm = ({ id, disabled }) => {
               onClick={handleSubmit(onSubmit)}
               disabled={disabled}
             >
-              Submit
+             {t('submit.1')}
             </Button>
           </div>
         </Form>
