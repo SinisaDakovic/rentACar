@@ -78,7 +78,7 @@ const ReservationForm = ({ id, disabled }) => {
           rules={{
             required: {
               value: true,
-              message: "Please select from data!",
+              message: t('plsSelFrDt.1'),
             },
           }}
         />
@@ -127,7 +127,7 @@ const ReservationForm = ({ id, disabled }) => {
           rules={{
             required: {
               value: true,
-              message: "Please select rent location!",
+              message: t('plsSelecRenL.1'),
             },
           }}
         />
@@ -156,7 +156,7 @@ const ReservationForm = ({ id, disabled }) => {
           rules={{
             required: {
               value: true,
-              message: "Please select return location!",
+              message: t('plsSelRetL.1'),
             },
           }}
         />
@@ -171,7 +171,6 @@ const ReservationForm = ({ id, disabled }) => {
           <Button
             icon={<CloudUploadOutlined className="site-form-item-icon" />}
             type="primary"
-            disabled={disabled}
           >
             {t('submit.1')}
           </Button>

@@ -157,5 +157,140 @@
     },
     "chooseRetL":{
         "1":"Choose return location"
+    },
+    "passw":{
+        "1":"Password"
+    },
+    "logIn":{
+        "1":"Login"
+    },
+    "logInCap":{
+        "1":"LOGIN"
+    },
+    "inputPass":{
+        "1":"Please input your password"
+    },
+    "minLen":{
+        "1":"Minimum length: 4 characters."
+    },
+    "maxLen":{
+        "1":"Maximum length: 12 characters."
+    },
+    "validPass":{
+        "1":"Please enter a valid password"
+    },
+    "inputEmail":{
+        "1":"Please input your email"
+    },
+    "validEmail":{
+        "1":"Please enter a valid email"
+    },
+    "wrongCred":{
+        "1":"Wrong email or password"
+    },
+    "doYouWantToDel":{
+        "1":"Do you want to delete reservation"
+    },
+    "thisActWillDel":{
+        "1":"This action will delete reservation"
+    },
+    "infoReserv":{
+        "1":"Info reservation"
+    },
+    "plsSelecRenL":{
+        "1":"Please select rent location!"
+    },
+    "plsSelRetL":{
+        "1":"Please select return location!"
+    },
+    "plsSelFrDt":{
+        "1":"Please select from data!"
+    },
+    "doYouWantToDelCli":{
+        "1":"Do you want to delete client"
+    },
+    "thisUsrDontHaveCli":{
+        "1":"This user dont have client data. You cant delete it."
+    },
+    "plsEntNam":{
+        "1":"Please enter name!"
+    },
+    "maxLen30":{
+        "1":"Maximum length: 30 characters."
+    },
+    "plsEntValNam":{
+        "1":"Please enter valid name!"
+    },
+    "plsEntIdDocNO":{
+        "1":"Please enter identification document no!"
+    },
+    "plsEntValId":{
+        "1":"Please enter a valid identification document no! (1 to 3 digit)"
+    },
+    "plsSelCon":{
+        "1":"Please select country!"
+    },
+    "plsEntPhon":{
+        "1":"Please enter phone!"
+    },
+    "plsEntValPhon":{
+        "1":"Please enter valid phone!"
+    },
+    "plsEntValEmailCl":{
+        "1":"Please enter a valid email! ( example@mail.com )"
+    },
+    "plsInpEmail":{
+        "1":"Please input email!"
+    },
+    "doYouWanDelCar":{
+        "1":"Do you want to delete car"
+    },
+    "thisAcWill":{
+        "1":"This action will also delete all reservations tied to car"
+    },
+    "infCar":{
+        "1":"Info car"
+    },
+    "plsEntPlNo":{
+        "1":"Please enter plate number!"
+    },
+    "plsEntValPlNo":{
+        "1":"Please enter a valid plate number (ex AB AB123)"
+    },
+    "plsEntProdYear":{
+        "1":"Please enter production year!"
+    },
+    "prodYrCant":{
+        "1":"Production year cant be under 1950!"
+    },
+    "prdYrCantO":{
+        "1":"Production year cant be over this year!"
+    },
+    "plsSelCarT":{
+        "1":"Please select car type!"
+    },
+    "plsEntNoSeat":{
+        "1":"Please enter number of seats!"
+    },
+    "plsEntValNoSeat":{
+        "1":"Please enter a valid number of seats"
+    },
+    "minNumSeats":{
+        "1":"Minimum number of seats: 1."
+    },
+    "maxNumSeats":{
+        "1":"Maximum number of seats: 55."
+    },
+    "plsEntPrcPD":{
+        "1":"Please enter price per day!"
+    },
+    "minPrcPD":{
+        "1":"Minimum price per day - 30."
+    },
+    "maxPrcPD":{
+        "1":"Maximum price per day - 150."
+    },
+    "plsEntValPrcPD":{
+        "1":"Please enter a valid price per day"
     }
 }

@@ -105,7 +105,7 @@ const Clients = () => {
             e.stopPropagation();
             if (record?.user?.id) {
               confirm({
-                title: `Do you want to delete client ${record?.name}?`,
+                title: `${t('doYouWantToDelCli.1')} ${record?.name}?`,
                 icon: <DeleteFilled/>,
                 okType: "danger",
                 onOk() {
@@ -117,7 +117,7 @@ const Clients = () => {
               });
             } else {
               confirm({
-                title: "This user dont have client data. You cant delete it.",
+                title: t('thisUsrDontHaveCli.1'),
                 icon: <ExclamationCircleOutlined />,
                 onOk() {
                   console.log("OK");

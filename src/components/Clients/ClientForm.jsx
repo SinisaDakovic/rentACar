@@ -124,19 +124,19 @@ const ClientForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter name!",
+                message: t('plsEntNam.1'),
               },
               minLength: {
                 value: 4,
-                message: "Minimum length: 4 characters.",
+                message: t('minLen.1'),
               },
               maxLength: {
                 value: 30,
-                message: "Maximum length: 30 characters.",
+                message: t('maxLen30.1'),
               },
               pattern: {
                 value: /^[a-z ,.'-]+$/i,
-                message: "Please enter valid name!",
+                message: t('plsEntValNam.1'),
               },
             }}
           />
@@ -161,12 +161,11 @@ const ClientForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter identification document no!",
+                message: t('plsEntIdDocNO.1'),
               },
               pattern: {
                 value: /^[0-9]{1,3}$/i,
-                message:
-                  "Please enter a valid identification document no! (1 to 3 digit)",
+                message:t('plsEntValId.1'),
               },
             }}
           />
@@ -195,7 +194,7 @@ const ClientForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please select country!",
+                message: t('plsSelCon.1'),
               },
             }}
           />
@@ -220,11 +219,11 @@ const ClientForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter phone!",
+                message: t('plsEntPhon.1'),
               },
               pattern: {
                 value: /^(\+\d{1,3}\s)?\(?\d{2,3}\)?[\s.-]\d{3}[\s.-]\d{3}$/i,
-                message: "Please enter valid phone!",
+                message: t('plsEntValPhon.1'),
               },
             }}
           />
@@ -249,15 +248,15 @@ const ClientForm = ({ id, disabled }) => {
             rules={{
               minLength: {
                 value: 4,
-                message: "Minimum length: 4 characters.",
+                message: t('minLen.1'),
               },
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Please enter a valid email! ( example@mail.com )",
+                message: t("plsEntValEmailCl.1"),
               },
               required: {
                 value: true,
-                message: "Please input email!",
+                message: t('plsInpEmail.1'),
               },
             }}
           />

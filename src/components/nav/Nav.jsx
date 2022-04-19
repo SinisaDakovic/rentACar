@@ -81,15 +81,18 @@ const Nav = ({ content }) => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
-        <Menu mode="horizontal" theme={"dark"}>
+        <Menu mode="horizontal" theme={"dark"} style={{justifyContent:'flex-end'}}>
+
+
           <Menu.Item
             key="logo"
+            style={{marginRight:'auto'}}
             onClick={() => navigate("/home")}
-          >
+            >
             <img src={Logo} alt="Logo" height="50px" width="150px"/>
           </Menu.Item>
-
-          <div>
+            
+          
 
           <SubMenu key="options" icon={<SettingOutlined />} title={t('options.1')}>
             <Menu.ItemGroup className="siderMenuGroup" title={t('pages.1')}>
@@ -170,7 +173,6 @@ const Nav = ({ content }) => {
               </Menu.Item>
             </Menu.ItemGroup>
           </SubMenu>
-          </div>
           <Menu.Item key="user" icon={<UserOutlined />}>
             {t('usr.1')}: {user}
           </Menu.Item>

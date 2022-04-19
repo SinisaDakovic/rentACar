@@ -91,9 +91,9 @@ const Reservations = () => {
           onClick={(e) => {
             e.stopPropagation();
             confirm({
-              title: `Do you want to delete reservation ${record?.id}?`,
+              title: `${t('doYouWantToDel.1')} ${record?.id}?`,
               icon: <DeleteFilled className="red" />,
-              content: `This action will delete reservation ${record?.id}!`,
+              content: `${t('thisActWillDel.1')} ${record?.id}!`,
               okType: "danger",
               onOk() {
                 deleteMutation.mutate(record.id);
@@ -135,7 +135,7 @@ const Reservations = () => {
             return {
               onClick: () => {
                 open({
-                  title: `Info reservation - ${record?.id}`,
+                  title: `${t('infoReserv.1')} - ${record?.id}`,
                   content: <ReservationForm id={record?.id} disabled={true} />,
                 });
               },

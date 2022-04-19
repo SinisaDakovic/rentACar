@@ -116,9 +116,9 @@ const Cars = () => {
           onClick={(e) => {
             e.stopPropagation();
             confirm({
-              title: `Do you want to delete car ${record?.id}?`,
+              title: `${t('doYouWanDelCar.1')} ${record?.id}?`,
               icon: <DeleteFilled className="red" />,
-              content: `This action will also delete all reservations tied to car ${record?.id}!`,
+              content: `${t("thisAcWill.1")} ${record?.id}!`,
               okType: "danger",
               onOk() {
                 deleteMutation.mutate(record.id);
@@ -177,7 +177,7 @@ const Cars = () => {
             return {
               onClick: () => {
                 open({
-                  title: `Info car ${record?.id} - ${record?.plate_no}`,
+                  title: `${t('infCar.1')} ${record?.id} - ${record?.plate_no}`,
                   content: <CarForm id={record?.id} disabled={true} />,
                 });
               },

@@ -1,12 +1,14 @@
-import React from "react";
+import React,{ useState } from "react";
 import "../login/login.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom'
 import {useMutation} from 'react-query'
 import {login} from '../../services/account'
 import Logo from "../../logo.png";
+import {useTranslation} from 'react-i18next'
 
 function Login() {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -15,10 +17,15 @@ function Login() {
 
   const navigate = useNavigate()
 
+  const [reqError, setReqError] = useState('')
+
   const loginMutation = useMutation((data) => login(data), {
     onSuccess: (response) => {
       localStorage.setItem("jwt-token", response?.data["access_token"]);
       navigate("/home");
+    },
+    onError: (err) => {
+      setReqError(t('wrongCred.1'))
     }
   });
 
@@ -33,7 +40,7 @@ function Login() {
       </div>
       <div className="loginForm">
         <div className="loginContainer">
-          <h2>Login</h2>
+          <h2>{t('logIn.1')}</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="email">Email </label>
@@ -42,15 +49,15 @@ function Login() {
                 {...register("email", {
                   required: {
                     value: true,
-                    message: "Please input your email",
+                    message: t('inputEmail.1'),
                   },
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Please enter a valid email",
+                    message: t('validEmail.1'),
                   },
                   minLength: {
                     value: 4,
-                    message: "Minimum length: 4 characters.",
+                    message: t('minLen.1'),
                   },
                 })}
                 type="email"
@@ -64,25 +71,25 @@ function Login() {
             </div>
 
             <div>
-              <label htmlFor="password">Password </label>
+              <label htmlFor="password">{t('passw.1')}</label>
               <input
-                placeholder="Password"
+                placeholder={t('passw.1')}
                 {...register("password", {
                   required: {
                     value: true,
-                    message: "Please input your password",
+                    message: t('inputPass.1'),
                   },
                   minLength: {
                     value: 4,
-                    message: "Minimum length: 4 characters.",
+                    message: t('minLen.1'),
                   },
                   maxLength: {
                     value: 12,
-                    message: "Maximum length: 12 characters.",
+                    message: t('maxLen.1'),
                   },
                   pattern: {
                     value: /^[a-zA-Z0-9!#%]+$/g,
-                    message: "Please enter a valid password",
+                    message: t('validPass.1'),
                   },
                 })}
                 type="password"
@@ -94,8 +101,10 @@ function Login() {
                 <span></span>
               )}
             </div>
-
-            <input type="submit" value="LOGIN" id="loginButton" />
+            <span style={{ color: "red", fontSize: "12px", textAlign:"center" }}>
+              {reqError}
+              </span>
+            <input type="submit" value={t('logInCap.1')} id="loginButton" />
           </form>
         </div>
       </div>

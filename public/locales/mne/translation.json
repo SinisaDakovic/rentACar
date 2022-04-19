@@ -72,7 +72,7 @@
         "1":"Dodajte Auto"
     },
     "search":{
-        "1":"Pretrazite"
+        "1":"Pretražite"
     },
     "addNewCarTitle":{
         "1":"Dodajte novo auto"
@@ -90,10 +90,10 @@
         "1":"Ime"
     },
     "country":{
-        "1":"Drzava"
+        "1":"Država"
     },
     "chooseCountry":{
-        "1":"-- Izaberite drzavu --"
+        "1":"-- Izaberite državu --"
     },
     "phone":{
         "1":"Telefon"
@@ -157,6 +157,141 @@
     },
     "chooseRetL":{
         "1":"Izaberite povratnu lokaciju"
+    },
+    "passw":{
+        "1":"Šifra"
+    },
+    "logIn":{
+        "1":"Prijavite se"
+    },
+    "logInCap":{
+        "1":"Prijavite se"
+    },
+    "inputPass":{
+        "1":"Molimo vas unesite šifru"
+    },
+    "minLen":{
+        "1":"Minimalna dužina: 4 karaktera."
+    },
+    "maxLen":{
+        "1":"Maksimalna dužina: 12 karaktera."
+    },
+    "validPass":{
+        "1":"Molimo vas unesite validnu šifru"
+    },
+    "inputEmail":{
+        "1":"Molimo vas unesite email"
+    },
+    "validEmail":{
+        "1":"Molimo vas unesite validan email"
+    },
+    "wrongCred":{
+        "1":"Pogrešna šifra ili email"
+    },
+    "doYouWantToDel":{
+        "1":"Da li želite da izbrišete rezervaciju"
+    },
+    "thisActWillDel":{
+        "1":"Ova radnja će obrisati rezervaciju"
+    },
+    "infoReserv":{
+        "1":"Info rezervacije"
+    },
+    "plsSelecRenL":{
+        "1":"Molimo vas izaberite lokaciju rentanja!"
+    },
+    "plsSelRetL":{
+        "1":"Molimo vas izaberite lokaciju povratka!"
+    },
+    "plsSelFrDt":{
+        "1":"Molimo vas izaberite iz kalendara!"
+    },
+    "doYouWantToDelCli":{
+        "1":"Da li želite da izbrišete klijenta"
+    },
+    "thisUsrDontHaveCli":{
+        "1":"Ovaj korisnik nema podataka. Ne mozete ga obrisati."
+    },
+    "plsEntNam":{
+        "1":"Molimo vas unesite ime!"
+    },
+    "maxLen30":{
+        "1":"Maksimalna dužina: 30 karaktera."
+    },
+    "plsEntValNam":{
+        "1":"Molimo vas unesite validno ime!"
+    },
+    "plsEntIdDocNO":{
+        "1":"Molimo vas unesite broj lične karte!"
+    },
+    "plsEntValId":{
+        "1":"Molimo vas unesite validan broj lične karte! (1 do 3 cifre)"
+    },
+    "plsSelCon":{
+        "1":"Molimo vas izaberite državu!"
+    },
+    "plsEntPhon":{
+        "1":"Molimo vas unesite broj!"
+    },
+    "plsEntValPhon":{
+        "1":"Molimo vas unesite validan broj!"
+    },
+    "plsEntValEmailCl":{
+        "1":"Molimo vas unesite validan email! ( example@mail.com )"
+    },
+    "plsInpEmail":{
+        "1":"Molimo vas unesite email!"
+    },
+    "doYouWanDelCar":{
+        "1":"Da li želite da obrišete auto"
+    },
+    "thisAcWill":{
+        "1":"Ova radnja će takodje obrisati sve rezervacije povezane sa autom"
+    },
+    "infCar":{
+        "1":"Info auta"
+    },
+    "plsEntPlNo":{
+        "1":"Molimo vas unesite broj tablica!"
+    },
+    "plsEntValPlNo":{
+        "1":"Molimo vas unesite validan broj tablica (ex AB AB123)"
+    },
+    "plsEntProdYear":{
+        "1":"Molimo vas unesite godinu proizvodnje!"
+    },
+    "prodYrCant":{
+        "1":"Godina proizvodnje ne moze biti ispod 1950!"
+    },
+    "prdYrCantO":{
+        "1":"Godina proizvodnje ne moze biti veća od ove!"
+    },
+    "plsSelCarT":{
+        "1":"Molimo vas izaberite tip auta!"
+    },
+    "plsEntNoSeat":{
+        "1":"Molimo vas unesite broj sjedišta!"
+    },
+    "plsEntValNoSeat":{
+        "1":"Molimo vas unesite validan broj sjedišta"
+    },
+    "minNumSeats":{
+        "1":"Minimalni broj sjedišta: 1."
+    },
+    "maxNumSeats":{
+        "1":"Maksimalni broj sjedišta: 55."
+    },
+    "plsEntPrcPD":{
+        "1":"Molimo vas unesite cijenu po danu!"
+    },
+    "minPrcPD":{
+        "1":"Minimalna cijena po danu - 30."
+    },
+    "maxPrcPD":{
+        "1":"Maksimalna cijena po danu - 150."
+    },
+    "plsEntValPrcPD":{
+        "1":"Molimo vas unesite validnu cijenu po danu"
     }
 
 }

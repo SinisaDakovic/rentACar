@@ -135,11 +135,11 @@ const CarForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter plate number!",
+                message: t('plsEntPlNo.1'),
               },
               pattern: {
                 value: /^[A-Z]{2,2} [A-Z0-9]{5,5}$/,
-                message: "Please enter a valid plate number (ex AB AB123)",
+                message: t('plsEntValPlNo.1'),
               },
             }}
           />
@@ -166,15 +166,15 @@ const CarForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter production year!",
+                message: t('plsEntProdYear.1'),
               },
               min: {
                 value: 1950,
-                message: "Production year cant be under 1950!",
+                message: t('prodYrCant.1'),
               },
               max: {
                 value: new Date().getFullYear(),
-                message: "Production year cant be over this year!",
+                message: t('prdYrCantO.1'),
               },
             }}
           />
@@ -203,7 +203,7 @@ const CarForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please select car type!",
+                message: t('plsSelCarT.1'),
               },
             }}
           />
@@ -232,19 +232,19 @@ const CarForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter number of seats!",
+                message: t('plsEntNoSeat.1'),
               },
               pattern: {
                 value: /^[0-9]{1,2}$/,
-                message: "Please enter a valid number of seats",
+                message: t('plsEntValNoSeat.1'),
               },
               min: {
                 value: 1,
-                message: "Minimum number of seats: 1.",
+                message: t('minNumSeats.1'),
               },
               max: {
                 value: 55,
-                message: "Maximum number of seats: 55.",
+                message: t('maxNumSeats.1'),
               },
             }}
           />
@@ -271,19 +271,19 @@ const CarForm = ({ id, disabled }) => {
             rules={{
               required: {
                 value: true,
-                message: "Please enter price per day!",
+                message: t('plsEntPrcPD.1'),
               },
               min: {
                 value: 30,
-                message: "Minimum price per day - 30.",
+                message: t('minPrcPD.1'),
               },
               max: {
                 value: 150,
-                message: "Maximum price per day - 150.",
+                message: t('maxPrcPD.1'),
               },
               pattern: {
                 value: /^[0-9]{1,3}$/,
-                message: "Please enter a valid price per day",
+                message: t('plsEntValPrcPD.1'),
               },
             }}
           />
