@@ -21,6 +21,7 @@ import CarForm from '../Cars/CarForm'
 import ClientForm from '../Clients/ClientForm'
 import ReservationForm from '../Reservations/ReservationForm'
 import {useTranslation} from 'react-i18next'
+import '../nav/responsive.css'
 
 const { Header, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -89,7 +90,7 @@ const Nav = ({ content }) => {
             style={{marginRight:'auto'}}
             onClick={() => navigate("/home")}
             >
-            <img src={Logo} alt="Logo" height="50px" width="150px"/>
+            <img src={Logo} alt="Logo" className="logo"/>
           </Menu.Item>
             
           

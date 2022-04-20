@@ -7,3 +7,14 @@
 .buttons > button {
   margin-right: 10em;
 }
+
+@media (max-width: 590px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+  }
+  .buttons > button {
+    margin-right: 0;
+  }
+}
