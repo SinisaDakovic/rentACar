@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect} from "react";
 import Login from "./components/login/Login";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Home from "./components/home/Home";
@@ -13,6 +13,16 @@ import Reservations from "./components/Reservations/Reservations";
 const queryClient = new QueryClient();
 
 function App() {
+
+  const navigate = useNavigate()
+  const token = localStorage.getItem('jwt-token');
+
+  useEffect(()=>{
+      if(token){
+        navigate('/home')
+      }
+  }, [])
+
   return (
     <QueryClientProvider client={queryClient}>
       <ModalProvider>
