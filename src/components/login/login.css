@@ -6,7 +6,12 @@
 
 .loginImage {
   flex-grow: 1;
-  background-image: url("../../../public/images/cars.jpg");
+  background-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 100)
+    ),
+    url("../../../public/images/cars.jpg");
   background-size: cover;
   background-position: right bottom;
   display: flex;
