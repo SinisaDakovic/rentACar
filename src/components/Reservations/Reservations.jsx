@@ -1,6 +1,6 @@
-import React from "react";
-import { useMutation } from "react-query";
-import { deleteReservation } from "../../services/reservations";
+import React, {useEffect, useState} from "react";
+import { useMutation, useInfiniteQuery, useQueryClient } from "react-query";
+import { getReservations, deleteReservation } from "../../services/reservations";
 import { Table, Button, Modal, Input } from "antd";
 import { useModal } from "../context/ModalContext";
 import ReservationForm from "../Reservations/ReservationForm";
@@ -17,9 +17,13 @@ const Reservations = () => {
   const { open } = useModal();
   const { Search } = Input;
   const { confirm } = Modal;
+  const queryClient = useQueryClient();
+  const [search, setSearch] = useState("");
 
   const deleteMutation = useMutation((id) => deleteReservation(id), {
-    onSuccess: () => {},
+    onSuccess: () => {
+      queryClient.invalidateQueries("reservations");
+    },
     onError: (error) => {
       console.log(error);
     },
@@ -31,6 +35,31 @@ const Reservations = () => {
       content: <ReservationForm id={record?.id} />,
     });
   };
+
+    const {
+    data: getReservationsResponse,
+    fetchNextPage,
+    isFetching,
+    isFetchingNextPage,
+  } = useInfiniteQuery(["reservations",{search}, 1], getReservations, {
+    getNextPageParam: (lastPage) => {
+      return lastPage.data.current_page === lastPage.data.last_page
+        ? undefined
+        : lastPage.data.current_page + 1;
+    },
+  });
+
+  // useEffect(() => {
+  //   let table = document.querySelector(".ant-table-body");
+  //   table.addEventListener("scroll", (event) => {
+  //     if (
+  //       event.target.scrollTop ===
+  //       event.target.scrollHeight - event.target.clientHeight
+  //     ) {
+  //       fetchNextPage();
+  //     }
+  //   });
+  // });
 
   const columns = [
     {
@@ -110,6 +139,16 @@ const Reservations = () => {
     },
   ];
 
+   const onSearch = (data) => {
+    setSearch(data);
+  };
+
+  const newData = [];
+  getReservationsResponse?.pages.forEach((page) => {
+    newData.push(...page.data.data);
+  });
+
+
   return (
     <div>
       <div className="buttons">
@@ -117,19 +156,26 @@ const Reservations = () => {
           onClick={() =>
             open({
               title: t('addNewReserv.1'),
-              content: <ReservationForm />,
+              content: <ReservationForm addForm={true}/>,
             })
           }
           icon={<PlusSquareOutlined />}
         >
           {t("addResrv.1")}
         </Button>
-        <Search style={{ width: "250px" }} placeholder={t('search.1')} allowClear />
+        <Search 
+        style={{ width: "250px" }}
+        placeholder={t('search.1')} 
+        onSearch={onSearch}
+        loading={isFetching}
+        allowClear 
+        />
       </div>
       <div>
         <Table
           columns={columns}
           pagination={false}
+          dataSource={newData}
           rowKey={(record) => record?.id}
           onRow={(record) => {
             return {

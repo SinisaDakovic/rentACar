@@ -41,7 +41,7 @@ const Cars = () => {
     isFetching,
     fetchNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery(["vehicle", { search },2], getCars, {
+  } = useInfiniteQuery(["vehicle", { search },1], getCars, {
     getNextPageParam: (lastPage) => {
       return lastPage.data.current_page === lastPage.data.last_page
         ? undefined
@@ -150,7 +150,7 @@ const Cars = () => {
           onClick={() =>
             open({
               title: t('addNewCarTitle.1'),
-              content: <CarForm />,
+              content: <CarForm addForm={true}/>,
             })
           }
           icon={<PlusSquareOutlined/>}

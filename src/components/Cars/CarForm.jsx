@@ -11,13 +11,13 @@ import {
 } from "@ant-design/icons";
 import { storeCar, getCarTypes, updateCar, showCar } from "../../services/cars";
 import TextArea from "antd/lib/input/TextArea";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient, QueryClientProvider } from "react-query";
 import { useModal } from "../context/ModalContext";
 import PropTypes from "prop-types";
 import "antd/dist/antd.css";
 import {useTranslation} from 'react-i18next'
 
-const CarForm = ({ id, disabled }) => {
+const CarForm = ({ id, disabled, addForm }) => {
     
   const queryClient = useQueryClient();
   const [enableQuery, setEnableQuery] = useState(false);
@@ -45,17 +45,7 @@ const CarForm = ({ id, disabled }) => {
       close();
     },
     onError: (error) => {
-      console.log(error);
-      if (
-        error?.response?.data?.message ===
-        "Invalid argument supplied for foreach()"
-      ) {
-        queryClient.invalidateQueries("vehicle");
-        setErrorMessage("");
-        close();
-      } else {
-        setErrorMessage(error?.response?.data?.message);
-      }
+      setErrorMessage(error?.response?.data?.message);
     },
   });
 
@@ -69,6 +59,7 @@ const CarForm = ({ id, disabled }) => {
         close();
       },
       onError: (error) => {
+        console.log(error.response)
         if (
           error?.response?.data?.message ===
           "Invalid argument supplied for foreach()"
@@ -85,17 +76,35 @@ const CarForm = ({ id, disabled }) => {
 
   const onSubmit = (data) => {
     if (!id) {
-      addMutation.mutate(data);
-    } else {
-      let year = "" + data.production_year;
-      editMutation.mutate({
+       
+      addMutation.mutate({
         plate_no: data.plate_no,
-        production_year: year,
+        production_year: data.production_year,
         car_type_id: data.car_type_id,
         no_of_seats: data.no_of_seats,
         price_per_day: data.price_per_day,
         remarks: data.remarks,
+        'photo[]': data.photo
       });
+      queryClient.invalidateQueries("vehicle");
+      setErrorMessage("");
+      close();
+    } else {
+      let numberOfSeats = "" + data.no_of_seats
+      let pricePerDay = "" + data.price_per_day
+      let productionYear = "" + data.production_year
+      editMutation.mutate({
+        plate_no: data.plate_no,
+        production_year: productionYear,
+        car_type_id: data.car_type_id,
+        no_of_seats: numberOfSeats,
+        price_per_day: pricePerDay,
+        remarks: data.remarks,
+        'photo[]': data.photo
+      });
+      queryClient.invalidateQueries("vehicle");
+      setErrorMessage("");
+      close();
     }
   };
 
@@ -116,7 +125,7 @@ const CarForm = ({ id, disabled }) => {
   const { t } = useTranslation()
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Spin spinning={isLoading}>
         <Form>
           <Form.Item label={t('plateNum.1')}></Form.Item>
@@ -137,10 +146,10 @@ const CarForm = ({ id, disabled }) => {
                 value: true,
                 message: t('plsEntPlNo.1'),
               },
-              pattern: {
-                value: /^[A-Z]{2,2} [A-Z0-9]{5,5}$/,
-                message: t('plsEntValPlNo.1'),
-              },
+              // pattern: {
+              //   value: /^[A-Z]{2,2} [A-Z0-9]{5,5}$/,
+              //   message: t('plsEntValPlNo.1'),
+              // },
             }}
           />
           {errors?.plate_no?.message !== "" ? (
@@ -222,6 +231,7 @@ const CarForm = ({ id, disabled }) => {
               <Input
                 {...field}
                 disabled={disabled}
+                type="number"
                 autoComplete="off"
                 placeholder={t('noOfSeats.1')}
                 prefix={
@@ -302,7 +312,7 @@ const CarForm = ({ id, disabled }) => {
             }}
           ></Form.Item>
           <Controller
-            name={t('remarks.1')}
+            name="remarks"
             control={control}
             render={({ field }) => (
               <TextArea
@@ -314,6 +324,26 @@ const CarForm = ({ id, disabled }) => {
               />
             )}
           />
+          <Form.Item label={"Photo"}></Form.Item>
+          <Controller
+            name="photo"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                disabled={disabled}
+                autoComplete="off"
+                type="file"
+              />
+            )}
+          />
+          {errors?.production_year?.message !== "" ? (
+            <span style={{ color: "red", fontSize: "12px" }}>
+              {errors?.production_year?.message}
+            </span>
+          ) : (
+            <span></span>
+          )}
           <div style={{ textAlign: "center", marginTop: "1em" }}>
             <Button
               icon={<CloudUploadOutlined className="site-form-item-icon" />}
@@ -329,7 +359,7 @@ const CarForm = ({ id, disabled }) => {
           <div style={{ color: "red", fontSize: "12px" }}>{errorMessage}</div>
         ) : null}
       </Spin>
-    </>
+    </QueryClientProvider>
   );
 };
 

@@ -1,11 +1,23 @@
 import axiosInstance from "./axios";
 
-//GET USERS REQUEST JAVLJA ERROR 500
+export const getClients = ({ pageParam = 1, queryKey }) => {
+  const { search } = queryKey[1];
+  return axiosInstance.get(`/clients?page=${pageParam}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwt-token")}`},
+    params: {
+      search: search,
+    },
+  });
+};
 
+export const getAllClients = () => {
+  return axiosInstance.get(`/clients`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwt-token")}`},
+  });
+};
 
-//addClient javlja error 404
 export const addClient = (data) => {
-  return axiosInstance.post(`/create-client`, data, {
+  return axiosInstance.post(`/user-store`, data, {
     headers: { Authorization: `Bearer ${localStorage.getItem("jwt-token")}` },
   });
 };

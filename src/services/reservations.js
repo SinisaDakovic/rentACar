@@ -1,6 +1,14 @@
 import axiosInstance from "./axios";
 
-//Get Reservations javlja error 500
+export const getReservations = ({ pageParam = 1, queryKey }) => {
+  const { search } = queryKey[1];
+  return axiosInstance.get(`/reservations?page=${pageParam}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("jwt-token")}`},
+    params: {
+      search: search,
+    },
+  });
+};
 
 export const storeReservation = (data) => {
   return axiosInstance.post(`/reservation-store`, data, {

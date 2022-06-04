@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Button, Modal, Input } from "antd";
 import { useModal } from "../context/ModalContext";
 import ClientForm from "../Clients/ClientForm";
+import { useMutation, useInfiniteQuery, useQueryClient } from "react-query";
+import { getClients, deleteClient } from "../../services/clients";
 import {
   DeleteFilled,
   EditFilled,
@@ -14,14 +16,23 @@ import {useTranslation} from 'react-i18next'
 
 const Clients = () => {
 
-  //Komponenta nije do kraja funkcionalna
-
+const queryClient = useQueryClient();
   const { t } = useTranslation();
 
   const { open } = useModal();
   const { confirm } = Modal;
   const { Search } = Input;
   const [search, setSearch] = useState("");
+
+
+  const deleteMutation = useMutation((id) => deleteClient(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries("clients");
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   const editButtonClick = (id) => {
     open({
@@ -30,6 +41,32 @@ const Clients = () => {
     });
   };
 
+    const {
+    data: getClientsResponse,
+    isFetching,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery(["clients", { search },1], getClients, {
+    getNextPageParam: (lastPage) => {
+      return lastPage.data.current_page === lastPage.data.last_page
+        ? undefined
+        : lastPage.data.current_page + 1;
+    },
+  });
+
+  useEffect(() => {
+    let data = document.querySelector(".ant-table-body");
+    data.addEventListener("scroll", (event) => {
+      if (
+        event.target.scrollTop ===
+        event.target.scrollHeight - event.target.clientHeight
+      ) {
+        fetchNextPage();
+      }
+    });
+  });
+
+  console.log(getClientsResponse)
   const columns = [
     {
       key: "identification_document_no",
@@ -109,7 +146,7 @@ const Clients = () => {
                 icon: <DeleteFilled/>,
                 okType: "danger",
                 onOk() {
-                  console.log("OK");
+                  deleteMutation.mutate(record.user.id)
                 },
                 onCancel() {
                   console.log("Cancel");
@@ -140,6 +177,11 @@ const Clients = () => {
     setSearch(data);
   };
 
+   const newData = [];
+  getClientsResponse?.pages.forEach((page) => {
+    newData.push(...page.data.data);
+  });
+
 
   return (
     <div>
@@ -148,7 +190,7 @@ const Clients = () => {
           onClick={() =>
             open({
               title: t('addNewClientTitle.1'),
-              content: <ClientForm />,
+              content: <ClientForm addForm={true}/>,
             })
           }
           icon={<PlusSquareOutlined/>}
@@ -165,6 +207,7 @@ const Clients = () => {
       <div>
         <Table
           columns={columns}
+          dataSource={newData}
           scroll={{ x: "1200px", y: "500px" }}
           pagination={false}
           rowKey={(record) => record?.id}

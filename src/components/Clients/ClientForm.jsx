@@ -27,7 +27,7 @@ import PropTypes from "prop-types";
 import TextArea from "antd/lib/input/TextArea";
 import {useTranslation} from 'react-i18next'
 
-const ClientForm = ({ id, disabled }) => {
+const ClientForm = ({ id, disabled, addForm }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [enableQuery, setEnableQuery] = useState(false);
@@ -77,15 +77,23 @@ const ClientForm = ({ id, disabled }) => {
 
   const onSubmit = (data) => {
     if (!id) {
-      addMutation.mutate(data);
+      addMutation.mutate({
+        name:data.name,
+        phone_no: data.phone_no,
+        email: data.email,
+        identification_document_no: data.identification_document_no,
+        country_id: data.country_id,
+        remarks: data.remarks
+      });
     } else {
-      let phone_number = parseInt(data.phone_no);
+      let phone_number = parseInt(data.phone_no.split(' ').join(''))
       editMutation.mutate({
-        name: data.name,
+        name:data.name,
         phone_no: phone_number,
         email: data.email,
         identification_document_no: data.identification_document_no,
         country_id: data.country_id,
+        remarks: data.remarks
       });
     }
   };
@@ -142,12 +150,12 @@ const ClientForm = ({ id, disabled }) => {
           />
           {errors?.name?.message !== "" ? (
             <span style={{color:'red', fontSize:'12px'}}>{errors?.name?.message}</span>
-          ) : (
-            <span></span>
-          )}
+            ) : (
+              <span></span>
+              )}
           <Form.Item label={t('indentNumber.1')}></Form.Item>
           <Controller
-            name="identification_document_no"
+          name="identification_document_no"
             control={control}
             render={({ field }) => (
               <Input
@@ -232,6 +240,43 @@ const ClientForm = ({ id, disabled }) => {
           ) : (
             <span></span>
           )}
+          {addForm ? <></> : <>
+          
+          <Form.Item label={"First registration"}></Form.Item>
+          <Controller
+            name="date_of_first_reservation"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                autoComplete="off"
+                disabled={true}
+              />
+            )}
+            />
+          {errors?.name?.message !== "" ? (
+            <span style={{color:'red', fontSize:'12px'}}>{errors?.name?.message}</span>
+          ) : (
+            <span></span>
+            )}
+          <Form.Item label={"Last registration"}></Form.Item>
+          <Controller
+            name="date_of_last_reservation"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                autoComplete="off"
+                disabled={true}
+              />
+            )}
+          />
+          {errors?.name?.message !== "" ? (
+            <span style={{color:'red', fontSize:'12px'}}>{errors?.name?.message}</span>
+            ) : (
+            <span></span>
+          )}
+          </>}
           <Form.Item label="Email"></Form.Item>
           <Controller
             name="email"
