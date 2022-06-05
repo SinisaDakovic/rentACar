@@ -41,21 +41,21 @@ const ReservationForm = ({ id, disabled, addForm }) => {
 
   const clientContent = (
     <div>
-      <p>{t('name.1')}: {showReservationResponse?.data.client.name}</p>
-      <p>{t('noOfDoc.1')}:{showReservationResponse?.data.client.identification_document_no}</p>
-      <p>Email: {showReservationResponse?.data?.client.email}</p>
-      <p>{t('phone.1')}: {showReservationResponse?.data?.client.phone_no}</p>
-      <p>{t('country.1')}: {showReservationResponse?.data?.client.country.name}</p>
+      <p>{t('name.1')}: {addForm ? '' : showReservationResponse?.data.client.name}</p>
+      <p>{t('noOfDoc.1')}:{addForm ? '' : showReservationResponse?.data.client.identification_document_no}</p>
+      <p>Email: {addForm ? '' : showReservationResponse?.data?.client.email}</p>
+      <p>{t('phone.1')}: {addForm ? '' : showReservationResponse?.data?.client.phone_no}</p>
+      <p>{t('country.1')}: {addForm ? '' : showReservationResponse?.data?.client.country.name}</p>
     </div>
   );
 
   const carContent = (
     <div>
-      <p>{t('plateNum.1')}: {showReservationResponse?.data.vehicle.plate_no}</p>
-      <p>{t('prodYear.1')}: {showReservationResponse?.data.vehicle.production_year}</p>
-      <p>{t('carType.1')}: {showReservationResponse?.data.vehicle.car_type.name}</p>
-      <p>{t('noOfSeats.1')}: {showReservationResponse?.data.vehicle.no_of_seats}</p>
-      <p>{t('pricePerD.1')}: {showReservationResponse?.data.vehicle.price_per_day}</p>
+      <p>{t('plateNum.1')}: {addForm ? '' : showReservationResponse?.data.vehicle.plate_no}</p>
+      <p>{t('prodYear.1')}: {addForm ? '' : showReservationResponse?.data.vehicle.production_year}</p>
+      <p>{t('carType.1')}: {addForm ? '' : showReservationResponse?.data.vehicle.car_type.name}</p>
+      <p>{t('noOfSeats.1')}: {addForm ? '' : showReservationResponse?.data.vehicle.no_of_seats}</p>
+      <p>{t('pricePerD.1')}: {addForm ? '' : showReservationResponse?.data.vehicle.price_per_day}</p>
     </div>
   );
 
@@ -67,6 +67,7 @@ const ReservationForm = ({ id, disabled, addForm }) => {
     },
     onError: (error) => {
       console.log(error.response);
+      queryClient.invalidateQueries("reservations");
       setErrorMessage(error?.response?.data?.message);
     },
   });

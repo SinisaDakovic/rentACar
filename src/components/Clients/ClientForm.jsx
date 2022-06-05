@@ -55,6 +55,7 @@ const ClientForm = ({ id, disabled, addForm }) => {
       close();
     },
     onError: (error) => {
+      queryClient.invalidateQueries("clients");
       setErrorMessage(error?.response?.data?.message);
     },
   });
@@ -85,6 +86,7 @@ const ClientForm = ({ id, disabled, addForm }) => {
         country_id: data.country_id,
         remarks: data.remarks
       });
+      queryClient.invalidateQueries("clients");
     } else {
       let phone_number = parseInt(data.phone_no.split(' ').join(''))
       editMutation.mutate({

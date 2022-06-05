@@ -129,7 +129,7 @@ const Nav = ({ content }) => {
                 onClick={() =>
                   open({
                     title: t('addNewClientTitle.1'),
-                    content: <ClientForm />,
+                    content: <ClientForm addForm={true}/>,
                   })}
                     >
                 {t('addNewClient.1')}
@@ -151,7 +151,7 @@ const Nav = ({ content }) => {
                onClick={() =>
                   open({
                     title: t('addNewReserv.1'),
-                    content: <ReservationForm />,
+                    content: <ReservationForm addForm={true}/>,
                   })}
               >
                 {t('addNewReserv.1')}

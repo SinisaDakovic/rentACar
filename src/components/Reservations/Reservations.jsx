@@ -49,17 +49,17 @@ const Reservations = () => {
     },
   });
 
-  // useEffect(() => {
-  //   let table = document.querySelector(".ant-table-body");
-  //   table.addEventListener("scroll", (event) => {
-  //     if (
-  //       event.target.scrollTop ===
-  //       event.target.scrollHeight - event.target.clientHeight
-  //     ) {
-  //       fetchNextPage();
-  //     }
-  //   });
-  // });
+  useEffect(() => {
+    let table = document.querySelector(".ant-table-tbody");
+    table.addEventListener("scroll", (event) => {
+      if (
+        event.target.scrollTop ===
+        event.target.scrollHeight - event.target.clientHeight
+      ) {
+        fetchNextPage();
+      }
+    });
+  });
 
   const columns = [
     {

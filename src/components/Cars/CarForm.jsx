@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 import "antd/dist/antd.css";
 import {useTranslation} from 'react-i18next'
 
-const CarForm = ({ id, disabled, addForm }) => {
+const CarForm = ({ id, disabled }) => {
     
   const queryClient = useQueryClient();
   const [enableQuery, setEnableQuery] = useState(false);
@@ -59,17 +59,9 @@ const CarForm = ({ id, disabled, addForm }) => {
         close();
       },
       onError: (error) => {
-        console.log(error.response)
-        if (
-          error?.response?.data?.message ===
-          "Invalid argument supplied for foreach()"
-        ) {
-          queryClient.invalidateQueries("vehicle");
-          setErrorMessage("");
-          close();
-        } else {
-          setErrorMessage(error?.response?.data?.message);
-        }
+      queryClient.invalidateQueries("vehicle");
+      console.log(error.response);
+      setErrorMessage(error?.response?.data?.message);
       },
     }
   );

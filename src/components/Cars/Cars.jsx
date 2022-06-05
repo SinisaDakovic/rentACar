@@ -32,7 +32,7 @@ const Cars = () => {
   const editButtonClick = (record) => {
     open({
       title: `${t('editCar.1')} - ${record?.id}`,
-      content: <CarForm id={record?.id} />,
+      content: <CarForm id={record?.id}/>,
     });
   };
 
